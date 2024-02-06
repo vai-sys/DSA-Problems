@@ -28,6 +28,6 @@ int main(){
     vector<int>array={1,12,-5,-6,50,3};
     int k=4;
     double ans=Subaaray(array,k);
-    cout<<" Maximum average of subarray is \n"<<fixed << setprecision(4) << ans << endl;
+    cout<<" Maximum average of subarray is \n"<< fixed<<setprecision(4)<<ans << endl;
     return 0;
 }
