@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-void permutation(string s, int index) {
+void permutation(string&s, int index) {
     if(index == s.length() - 1) {
         cout << s << ' ';
         return;
