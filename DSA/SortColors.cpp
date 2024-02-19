@@ -10,7 +10,7 @@ void sortcolors(int arr[],int n){
             start++;
             index++;
         }
-        else if(arr[index]==1){
+        else if(arr[index]==1){ 
             index++;
         }
        else if(arr[index]==2){
