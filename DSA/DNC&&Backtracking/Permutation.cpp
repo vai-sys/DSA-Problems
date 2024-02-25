@@ -10,8 +10,8 @@ void permutation(string&s, int index) {
     for(int j = index; j < s.length(); j++) {
         swap(s[index], s[j]);
         permutation(s, index + 1);
-        swap(s[index], s[j]);  // Backtrack to the original string
-    }
+        swap(s[index], s[j]); 
+    } 
 }
 
 int main() {
