@@ -16,6 +16,15 @@ void printLL(Node* head) {
     }
     cout << "NULL" << endl;
 }
+int length(Node* head){
+    Node* temp=head;
+    int count=0;
+    while(temp!=NULL){
+     count++;
+     temp=temp->next;
+    }
+    return count;
+}
 
 int main() {
     // Create nodes and initialize data
@@ -32,6 +41,7 @@ int main() {
 
     // Print the linked list
     printLL(head);
+    cout<<"Length of Linklist is\t"<<length(head);
 
     // Deallocate memory (optional)
     delete first;
