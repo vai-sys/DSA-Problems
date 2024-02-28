@@ -93,6 +93,58 @@ void insertAtMiddle(node* &head,node* &tail,int data,int pos){
 
     }
 }
+ void Deletion(node* &head,node* &tail,int pos){
+    // no node
+    int length=getLength(head);
+    if(head==nullptr){
+        cout<<"Can't Delete "<<endl;
+        return;
+    }
+    // delete at head
+    else if(pos==1){
+        node* temp=head;
+        head=head->next;
+        temp->next=nullptr;
+        head->prev=nullptr;
+        delete temp;
+
+    }
+    // if one node exists
+    else if(head==tail){
+        node* temp=head;
+        delete head;
+        head=nullptr;
+        tail=nullptr;
+
+    }
+    //  delete at tail
+    else if(pos==length+1){
+     node* prevnode=tail->prev;
+     prevnode->next=nullptr;
+     tail->prev=nullptr;
+    delete tail;
+    tail=prevnode;
+    }
+    else{
+        // insert at middle
+        node* temp=new node();
+        node* prevnode=nullptr;
+        node* currnode=head;
+        while(pos!=1){
+            pos--;
+            prevnode=currnode;
+            currnode=currnode->next;
+        }
+        node* nextnode=currnode->next;
+        prevnode->next=nextnode;
+        currnode->prev=nullptr;
+        currnode->next=nullptr;
+        nextnode->prev=prevnode;
+        delete currnode;
+
+    }
+
+ }
 
 int main() {
     node* head = nullptr;
@@ -103,9 +155,13 @@ int main() {
     insertAtHeadDLL(head, tail, 40);
     insertAtHeadDLL(head, tail, 50);
     insertAtTail(head, tail, 5);
-    insertAtMiddle(head,tail,100,3);
+    insertAtMiddle(head,tail,100,4);
+    
 
     cout << "Doubly Linked List: \t";
+    printLL(head);
+    Deletion(head,tail,6);
+    cout<<"after deletion"<<endl;
     printLL(head);
 
     return 0;
