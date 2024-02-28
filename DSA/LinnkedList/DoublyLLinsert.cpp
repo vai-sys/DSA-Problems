@@ -64,6 +64,35 @@ void insertAtTail(node* &head, node* &tail, int data) {
         tail = temp;
     }
 }
+void insertAtMiddle(node* &head,node* &tail,int data,int pos){
+    int length=getLength(head);
+  if (head == nullptr) {
+        node* temp = new node(data);
+        head = temp;
+        tail = temp;
+    } else if(pos==1) {
+        insertAtHeadDLL(head,tail,data);
+      
+    }
+    else if(pos==length+1){
+        insertAtTail(head,tail,data);
+    }
+    else{
+        node* temp=new node(data);
+        node* prevNode=nullptr;
+        node* currNode=head;
+        while(pos!=1){
+            pos--;
+            prevNode=currNode;
+            currNode=currNode->next;
+        }
+        prevNode->next=temp;
+        temp->prev=prevNode;
+        temp->next=currNode;
+        currNode->prev=temp;
+
+    }
+}
 
 int main() {
     node* head = nullptr;
@@ -74,6 +103,7 @@ int main() {
     insertAtHeadDLL(head, tail, 40);
     insertAtHeadDLL(head, tail, 50);
     insertAtTail(head, tail, 5);
+    insertAtMiddle(head,tail,100,3);
 
     cout << "Doubly Linked List: \t";
     printLL(head);
