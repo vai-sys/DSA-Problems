@@ -42,9 +42,9 @@ void DeleteHead(node* &head,node* &tail){
         tail=nullptr;
     }
     else{
-        node* temp=head;
-        head=head->next;
-        temp->next=nullptr;
+        node* temp = head;
+        head = head->next;
+        temp->next = nullptr;  
         delete temp;
 
     }
@@ -96,6 +96,7 @@ else{
   node* curr=head;
   while(pos!=1){
     prev=curr;
+    
     pos--;
     curr=curr->next;
   }
