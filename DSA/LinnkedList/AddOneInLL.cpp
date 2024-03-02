@@ -30,7 +30,7 @@ Node* AddOne(Node* &head){
     int carry=1;
     Node* temp=head;
     Node* prev=nullptr;
-    while(temp->next!=nullptr){
+    while(temp!=nullptr){
      int totalsum=temp->data+ carry;
      int digit=totalsum%10;
      carry=totalsum/10;
@@ -41,8 +41,10 @@ Node* AddOne(Node* &head){
 
     }
     if(carry!=0){
-    Node*nextNode=new Node(carry);
+    Node*nextNode=new Node(carry%10);
     prev->next=nextNode;
+    prev=nextNode;
+    carry=carry/10;
     }
     
     head=reverse(head);
