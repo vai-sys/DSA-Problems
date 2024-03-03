@@ -41,10 +41,10 @@ Node* AddOne(Node* &head){
 
     }
     if(carry!=0){
-    Node*nextNode=new Node(carry%10);
+    Node*nextNode=new Node(carry);
     prev->next=nextNode;
     prev=nextNode;
-    carry=carry/10;
+    // carry=carry/10;
     }
     
     head=reverse(head);
