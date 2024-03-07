@@ -16,32 +16,31 @@ public:
     }
 };
 
-int getlength(node* head) {
-    int len = 0;
-    node* temp = head;
-    while (temp != nullptr) {
-        len++;
-        temp = temp->next;
+node* KnodeRecursive(node* head, int k, int& count) {
+    if (head == nullptr) {
+        return nullptr;
     }
-    return len;
+
+    node* resultNode = KnodeRecursive(head->next, k, count);
+
+    count++;
+
+    if (count == k) {
+        return head;
+    }
+
+    return resultNode;
 }
 
-void Knode(node* head, int k) {
-    int length = getlength(head);
-    int pos = length - k;
+void printKthNodeFromEnd(node* head, int k) {
+    int count = 0;
+    node* resultNode = KnodeRecursive(head, k, count);
 
-    // Check if k is within the valid range
-    if (pos < 0 || pos >= length) {
+    if (resultNode != nullptr) {
+        cout << "The " << k << "-th node from the end is: " << resultNode->data << endl;
+    } else {
         cout << "Invalid value of k." << endl;
-        return;
     }
-
-    node* printNode = head;
-    for (int i = 0; i < pos; i++) {
-        printNode = printNode->next;
-    }
-
-    cout << "The " << k << "-th node from the end is: " << printNode->data << endl;
 }
 
 int main() {
@@ -60,8 +59,8 @@ int main() {
     }
     cout << endl;
 
-    int k = 2;
-    Knode(head, k);
+    int k = 4;
+    printKthNodeFromEnd(head, k);
 
     return 0;
 }
