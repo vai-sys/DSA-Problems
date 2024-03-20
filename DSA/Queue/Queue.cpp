@@ -6,6 +6,7 @@ class queue{
     int *arr;
     int rear;
     int front;
+    
     queue(int size){
         this->size=size;
         rear=-1;
