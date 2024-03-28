@@ -1,4 +1,5 @@
 #include<iostream>
+#include<queue>
 using namespace std;
 
 class node {
@@ -53,6 +54,22 @@ void postOrder(node* root){
     cout<<root->data <<endl;
 }
 
+void levelOrder(node*root){
+    queue<node*>q;
+    q.push(root);
+    while(!q.empty()){
+        node* front=q.front();
+        q.pop();
+        cout<<front->data;
+        if(front->left!=NULL){
+            q.push(front->left);
+        }
+        if(front->right!=NULL){
+            q.push(front->right);
+        }
+    }
+}
+
 // Main function
 int main() {
     node* root = createTree();
@@ -61,6 +78,12 @@ int main() {
     cout<<endl;
     cout<<"printing PostOrder"<<"   ";
     postOrder(root);
+    cout<<endl;
+      cout<<"printing InOrder"<<"   ";
+    inOrder(root);
+    cout<<endl;
+    cout<<" printing LevelOrder"<<endl;
+    levelOrder(root);
     cout<<endl;
     // delete root;
     return 0;
