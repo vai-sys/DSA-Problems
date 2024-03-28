@@ -1,52 +1,68 @@
 #include<iostream>
 using namespace std;
 
-// Node class for the binary tree
 class node {
 public:
     int data;
     node* left;
     node* right;
-    // Constructor to initialize node with given data
+ 
     node(int data) {
         this->data = data;
         this->left = NULL;
         this->right = NULL;
     }
 
-    // Destructor to deallocate memory
     ~node() {
         delete left;
         delete right;
     }
 };
 
-// Function to create a binary tree
+
 node* createTree() {
     cout << "Enter node (-1 to terminate): " << endl;
     int data;
     cin >> data;
-    // If user inputs -1, return NULL indicating termination of branch
     if (data == -1)
         return NULL;
-    // Create a new node with the entered data
-    node* newnode = new node(data);
-    // Recursively create left and right subtrees
-    newnode->left = createTree();
-    newnode->right = createTree();
-    return newnode; // Return the new node
+    node* root = new node(data);
+    root->left = createTree();
+    root->right = createTree();
+    return root; 
+}
+
+void preorder(node* root){
+    if(root==NULL) return;
+    cout<<root->data<<endl;
+    preorder(root->left);
+    preorder(root->right);
+}
+
+void inOrder(node* root){
+    if(root==NULL)return;
+    inOrder(root->left);
+    cout<<root->data <<endl;
+    inOrder(root->right);
+}
+
+void postOrder(node* root){
+    if(root==NULL)return;
+    postOrder(root->left);
+    postOrder(root->right);
+    cout<<root->data <<endl;
 }
 
 // Main function
 int main() {
-    // Create the binary tree
     node* root = createTree();
-
-    // Perform any operations on the tree here
-
-    // Deallocate memory
-    delete root;
-
+    cout<<"Printing Preorder"<<"   ";
+    preorder(root);
+    cout<<endl;
+    cout<<"printing PostOrder"<<"   ";
+    postOrder(root);
+    cout<<endl;
+    // delete root;
     return 0;
 }
 
