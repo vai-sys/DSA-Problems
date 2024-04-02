@@ -63,10 +63,57 @@ void levelOrder(Node* root){
         }
     }
 }
+void preOrder(Node* root){
+    if(root==NULL)return;
+    cout<<root->data<<" ";
+    preOrder(root->left);
+    preOrder(root->right);
+
+}
+void inOrder(Node* root){
+    if(root==NULL)return;
+   inOrder(root->left);
+    cout<<root->data<<" ";
+    
+   inOrder(root->right);
+
+}
+
+
+void postOrder(Node* root){
+    if(root==NULL)return;
+  postOrder(root->left);
+   postOrder(root->right);
+    cout<<root->data<<" ";
+
+}
+Node* minValue(Node* root){
+    if(root==NULL)return NULL;
+    Node* temp=root;
+    while(temp->left!=NULL){
+        temp=temp->left;
+    }
+    return temp;
+}
+
 
 int main(){
     Node* root=NULL;
     createBST(root);
     levelOrder(root);
+    cout<<"Inorder Traversal"<<endl;
+    inOrder(root);
+    cout<<"Preorder Traversal"<<endl;
+    preOrder(root);
+    cout<<"PostOrder Traversal"<<endl;
+    postOrder(root);
+    cout<<"MInValue is"<<endl;
+   Node* minvalue= minValue(root);
+   if(minvalue==NULL){
+    cout<<"no minValue"<<endl;
+   }
+   else{
+    cout<<"MIN VALUE"<<minvalue->data<<endl;
+   }
     return 0;
 }
