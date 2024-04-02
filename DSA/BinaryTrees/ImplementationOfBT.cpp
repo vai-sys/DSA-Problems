@@ -57,16 +57,24 @@ void postOrder(node* root){
 void levelOrder(node*root){
     queue<node*>q;
     q.push(root);
-    while(!q.empty()){
+    q.push(NULL);
+    while(q.size() >1){
         node* front=q.front();
         q.pop();
-        cout<<front->data;
+        if(front==NULL){
+            cout<<endl;
+            q.push(NULL);
+        }
+        else{
+    cout<<front->data;
         if(front->left!=NULL){
             q.push(front->left);
         }
         if(front->right!=NULL){
             q.push(front->right);
         }
+        }
+        
     }
 }
 
