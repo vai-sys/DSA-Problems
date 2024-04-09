@@ -46,7 +46,33 @@ public:
             cout << "Underflow, cannot delete" << endl;
             return;
         }
+        int ans=arr[1];
+        arr[1]=arr[size];
+        size--;
+        int index=1;
+        int maxIndex=index;
         
+        while(index<size){
+            int leftIndex=2*index;
+            int rightIndex=2*index+1;
+            if(arr[leftIndex] > arr[maxIndex]){
+                maxIndex=leftIndex;
+            }
+            if(arr[rightIndex] >arr[maxIndex]){
+                maxIndex=rightIndex;
+
+            }
+
+             if(maxIndex!=index){
+            swap(arr[maxIndex],arr[index]);
+            index=maxIndex;
+        }
+        else{
+            break;
+        }
+        }
+       
+
     }
 
        
