@@ -16,6 +16,7 @@ public:
     void insert(int val) {
         if (size == capacity) {
             cout << "Overflow, cannot insert values" << endl;
+            return;
         }
 
         size++;
@@ -25,6 +26,7 @@ public:
             int parentIndex = index / 2;
             if (arr[index] > arr[parentIndex]) {
                 swap(arr[index], arr[parentIndex]);
+                index = parentIndex; // Update index to parent
             }
             else {
                 break;
@@ -38,6 +40,16 @@ public:
         }
         cout << endl;
     }
+
+    void deletion() {
+        if (size == 0) {
+            cout << "Underflow, cannot delete" << endl;
+            return;
+        }
+        
+    }
+
+       
 };
 
 int main() {
@@ -49,5 +61,11 @@ int main() {
     h.insert(6);
     cout << "Printing the heap data: ";
     h.print();
+
+    h.deletion();
+    cout << "Heap after deletion: ";
+    h.print();
+
     return 0;
 }
+
