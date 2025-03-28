@@ -63,7 +63,7 @@ public:
     }
 
     ~Queue() {
-        delete[] arr;  
+        delete[] arr; 
     }
 };
 
